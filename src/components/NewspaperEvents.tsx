@@ -49,14 +49,14 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                         {/* Headline & Text */}
                         <div className="lg:col-span-8">
                             <h3 className="text-5xl md:text-7xl font-bold mb-6 leading-[0.9] tracking-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
-                                IEEE SoC Initiative Breaks All Previous Records
+                                IEEE Summer of Code
                             </h3>
-                            <div className="columns-1 md:columns-2 gap-8 text-lg font-serif leading-relaxed text-justify hyphens-auto">
+                            <div className="columns-1 md:columns-2 gap-8 text-lg font-serif leading-relaxed text-left hyphens-auto">
                                 <p className="mb-4">
-                                    <span className="float-left text-5xl font-black mr-2 mt-[-6px] font-sans">T</span>he Summer of Code initiative has concluded with unprecedented success. Over the course of three months, students from across the region gathered to build the future of technology. Innovation peaked as teams collaborated on open-source projects ranging from AI-driven healthcare solutions to decentralized finance platforms.
+                                    <span className="float-left text-5xl font-black mr-2 mt-[-6px] font-sans">I</span>EEE SoC stands as one of the biggest All-India open source contribution events. With a staggering prize pool of ₹75,000, the event galvanized the tech community, achieving over 1.5 Million+ impressions.
                                 </p>
                                 <p>
-                                    "The energy was electric," said the event coordinator. Participants worked through sleepless nights, fueled by passion and caffeine, to deliver MVPs that stunned the judges. This year's SoC has set a new benchmark for student-led technical innovation.
+                                    Participants and winners hailed from across India, collaborating to push the boundaries of open source software. The initiative has not only fostered code contributions but also built a lasting community of developers dedicated to innovation.
                                 </p>
                             </div>
                         </div>
@@ -64,13 +64,15 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                         {/* Image / Sidebar */}
                         <div className="lg:col-span-4 flex flex-col gap-4">
                             <div className="border-2 border-black p-1 bg-white shadow-sm">
-                                <div className="aspect-[4/3] bg-neutral-200 relative overflow-hidden grayscale contrast-125">
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="font-mono text-xs text-gray-500">IEEE SoC 2025 Highlights</span>
-                                    </div>
+                                <div className="aspect-[16/9] bg-white relative overflow-hidden border border-black">
+                                    <img
+                                        src="/socpreview.png"
+                                        alt="IEEE Summer of Code Banner"
+                                        className="w-full h-full object-contain"
+                                    />
                                 </div>
                                 <p className="text-[10px] font-sans mt-1 p-1 leading-tight text-gray-600 border-t border-gray-300 pt-1">
-                                    Fig 1.1: Participants collaborating during the final sprint phase of Summer of Code.
+                                    Fig 1.1: Official banner for the IEEE Summer of Code 2025 edition.
                                 </p>
                             </div>
                             {/* "Ad" or Stats */}

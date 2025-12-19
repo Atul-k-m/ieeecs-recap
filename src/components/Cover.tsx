@@ -13,25 +13,30 @@ export default function Cover() {
                 }}
             />
 
-            {/* SHARED: Logo Placeholders (Visible on both, resized for mobile) */}
-            <div className="w-full flex justify-center gap-4 md:gap-8 px-4 z-10 pt-4 md:pt-0 mb-4 md:mb-20">
-                {[1, 2, 3].map((i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="w-16 h-16 md:w-24 md:h-24 border-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center transform hover:rotate-2 transition-transform"
-                    >
-                        <span className="text-[10px] md:text-xs font-bold text-black/50 tracking-tighter">LOGO {i}</span>
-                    </motion.div>
-                ))}
+            {/* SHARED: Logo Placeholders */}
+            <div className="w-full flex justify-center gap-8 md:gap-12 px-4 z-10 pt-4 md:pt-0 mb-4 md:mb-20">
+                <motion.img
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    src="/stblogo.png"
+                    alt="IEEE STB Logo"
+                    className="h-16 md:h-24 w-auto object-contain drop-shadow-lg"
+                />
+                <motion.img
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    src="/cslogo.png"
+                    alt="IEEE CS Logo"
+                    className="h-16 md:h-24 w-auto object-contain drop-shadow-lg scale-90" // CS logo often needs slight scaling to match visual weight
+                />
             </div>
 
             {/* MOBILE HERO: Full width single image + Text */}
             <div className="md:hidden w-full flex-grow flex flex-col items-center justify-start gap-4">
                 <img
-                    src="/mobile_hero.jpg"
+                    src="/mobile_hero.png"
                     alt="IEEE CS Chapter Recap 2025 Adventure Log"
                     className="w-full h-auto object-cover mix-blend-multiply border-y-4 border-black"
                 />
@@ -61,7 +66,7 @@ export default function Cover() {
                             src="/ieee_recap_title.jpg"
                             alt="IEEE CS Chapter Recap 2025"
                             className="w-full h-auto mix-blend-multiply"
-                    
+
                         />
                     </motion.div>
 

@@ -10,14 +10,14 @@ import SidebarNav from './components/SidebarNav'
 
 // Event data
 const events = [
-    { id: 1, month: 'NOV 2024', title: 'CODECON', description: 'The ultimate coding conference brought together 500+ participants for 24 hours of intense programming. Keynote speakers from Google and Microsoft kicked off the event.', size: 'large' as const },
-    { id: 2, month: 'DEC 2024', title: 'HACK THE HALLS', description: 'Our annual holiday hackathon features festive themes and giving back to the community through tech solutions.', size: 'small' as const },
-    { id: 3, month: 'JAN 2025', title: 'IEEE INTERNSHIP DRIVE', description: 'Connecting students with top tier tech companies. Over 50 students placed in the first week alone.', size: 'tall' as const },
-    { id: 4, month: 'FEB 2025', title: 'PROJECT OF MONTH', description: 'Showcasing the "Smart Campus" initiative built by second year students using IoT sensors.', size: 'small' as const },
-    { id: 5, month: 'MAR 2025', title: 'COMPSIF', description: 'The Comprehensive Skills Framework workshop series covered React, Node.js, and Cloud Computing basics.', size: 'wide' as const },
-    { id: 6, month: 'APR 2025', title: 'STARTUP SPRINT', description: 'From idea to MVP in 48 hours. The winning team "AgriTech" secured seed funding.', size: 'small' as const },
-    { id: 7, month: 'MAY 2025', title: 'IEEE STEMSPIRE', description: 'Outreach program to local schools to inspire the next generation of engineers.', size: 'large' as const },
-    { id: 8, month: 'JUN 2025', title: 'WoP WORKSHOP', description: 'Workshop on Programming fundamentals for freshmen, setting the foundation for their journey.', size: 'small' as const },
+    { id: 1, month: 'NOV 2024', title: 'CODECON', description: 'A competitive coding event with a unique comic touch.', size: 'large' as const },
+    { id: 2, month: 'DEC 2024', title: 'HACK THE HALLS', description: 'Organized in partnership with ITS, this fun Christmas event served as a bridge for newcomers.', size: 'small' as const },
+    { id: 3, month: 'JAN 2025', title: 'STUDENT INTERNSHIP', description: 'A programme run by IEEE CS Bangalore for enthusiastic members to gain real-world experience.', size: 'tall' as const },
+    { id: 4, month: 'FEB 2025', title: 'PROJECT OF MONTH', description: 'A month-long guided program designed to help members understand the complete process of building a project.', size: 'small' as const },
+    { id: 5, month: 'MAR 2025', title: 'COMPSIF', description: 'An international conference conducted under the banner of IEEE STB BMSIT&M, bringing together global experts.', size: 'wide' as const },
+    { id: 6, month: 'APR 2025', title: 'STARTUP SPRINT', description: 'A sprint ideathon where participants pitched their unique innovative ideas to a panel of judges.', size: 'small' as const },
+    { id: 7, month: 'MAY 2025', title: 'IEEE STEMSPIRE', description: 'In collaboration with Rota BMS, this initiative taught coding fundamentals to children.', size: 'large' as const },
+    { id: 8, month: 'JUN 2025', title: 'WoP (Winter of Projects)', description: 'An exhibition of exceptional projects developed under the banner of IEEE STB BMSIT&M.', size: 'small' as const },
 ]
 
 // Updated Team Data with Images
@@ -49,19 +49,29 @@ export default function App() {
             <SidebarNav />
 
             {/* Hero */}
-            <Cover />
+            <section id="home">
+                <Cover />
+            </section>
 
             {/* EVENTS - Authentic Newspaper Style */}
-            <NewspaperEvents events={events} />
+            <section id="timeline">
+                <NewspaperEvents events={events} />
+            </section>
 
             {/* MISSION / VISION */}
-            <MissionVision />
+            <section id="mission">
+                <MissionVision />
+            </section>
 
             {/* TEAM */}
-            <TeamPage team={team} />
+            <section id="team">
+                <TeamPage team={team} />
+            </section>
 
             {/* FINALE */}
-            <Finale />
+            <section id="finale">
+                <Finale />
+            </section>
         </div>
     )
 }
