@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+/* ============================================
+   NEO-BRUTALIST DESIGN SYSTEM
+   B/W Manga-style with Heavy Typography
+   ============================================ */
+
+@layer base {
+    :root {
+        --font-display: 'Bebas Neue', Impact, sans-serif;
+        --font-mono: 'Space Mono', 'Courier New', monospace;
+        --font-gothic: 'Dela Gothic One', Impact, sans-serif;
+    }
+
+    * {
+        -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+        @apply scroll-smooth;
+        font-size: 16px;
+    }
+
+    body {
+        @apply bg-white text-black;
+        font-family: var(--font-mono);
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        @apply bg-black text-white;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-black;
+    }
+}
+
+/* ============================================
+   BRUTALIST COMPONENTS
+   ============================================ */
+@layer components {
+
+    /* Hard shadow boxes */
+    .brutalist-box {
+        @apply bg-white border-4 border-black;
+        box-shadow: 8px 8px 0px 0px #000;
+    }
+
+    .brutalist-box-sm {
+        @apply bg-white border-2 border-black;
+        box-shadow: 4px 4px 0px 0px #000;
+    }
+
+    .brutalist-box-lg {
+        @apply bg-white border-8 border-black;
+        box-shadow: 16px 16px 0px 0px #000;
+    }
+
+    /* Inverted box */
+    .brutalist-box-invert {
+        @apply bg-black text-white border-4 border-black;
+        box-shadow: 8px 8px 0px 0px #000;
+    }
+
+    /* Typography classes */
+    .text-mega {
+        font-family: var(--font-display);
+        font-size: clamp(4rem, 25vw, 20rem);
+        line-height: 0.85;
+        letter-spacing: -0.02em;
+    }
+
+    .text-display {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 15vw, 12rem);
+        line-height: 0.9;
+        letter-spacing: -0.01em;
+    }
+
+    .text-gothic {
+        font-family: var(--font-gothic);
+        font-size: clamp(2rem, 8vw, 6rem);
+        line-height: 1;
+    }
+
+    .text-mono-lg {
+        font-family: var(--font-mono);
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        letter-spacing: 0.05em;
+        font-weight: 700;
+    }
+
+    /* Underline effect */
+    .underline-brutal {
+        position: relative;
+        display: inline-block;
+    }
+
+    .underline-brutal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.3em;
+        background: #000;
+        z-index: -1;
+        transform: translateY(20%);
+    }
+
+    /* Strikethrough effect */
+    .strike-brutal {
+        position: relative;
+        display: inline-block;
+    }
+
+    .strike-brutal::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        right: -5%;
+        height: 8px;
+        background: #000;
+    }
+
+    /* Manga panel */
+    .manga-panel {
+        @apply relative bg-white border-4 border-black p-4 md:p-8;
+        box-shadow: 8px 8px 0px 0px #000;
+    }
+
+    /* Notebook lines */
+    .notebook-bg {
+        background-image:
+            repeating-linear-gradient(transparent 0px,
+                transparent 31px,
+                #ddd 31px,
+                #ddd 32px);
+        background-size: 100% 32px;
+    }
+
+    /* Grid paper */
+    .grid-paper {
+        background-image:
+            linear-gradient(#eee 1px, transparent 1px),
+            linear-gradient(90deg, #eee 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    /* Halftone pattern */
+    .halftone {
+        background-image: radial-gradient(circle, #000 1px, transparent 1px);
+        background-size: 6px 6px;
+    }
+
+    /* Corner fold */
+    .corner-fold {
+        position: relative;
+    }
+
+    .corner-fold::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-style: solid;
+        border-width: 0 30px 30px 0;
+        border-color: transparent #000 transparent transparent;
+    }
+
+    /* Page marker */
+    .page-marker {
+        @apply inline-block px-3 py-1 bg-black text-white text-xs tracking-widest;
+        font-family: var(--font-mono);
+    }
+
+    /* Chapter marker */
+    .chapter-marker {
+        @apply inline-block px-4 py-2 border-4 border-black bg-white;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+        font-weight: 700;
+    }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-slideUp {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-slideLeft {
+    animation: slideLeft 0.6s ease-out forwards;
+}
+
+.animate-slideRight {
+    animation: slideRight 0.6s ease-out forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-drawLine {
+    animation: drawLine 0.8s ease-out forwards;
+    transform-origin: left;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-600 {
+    animation-delay: 0.6s;
+}
+
+/* ============================================
+   MOBILE FIRST UTILITIES
+   ============================================ */
+@layer utilities {
+    .safe-padding {
+        @apply px-4 md:px-8 lg:px-16;
+    }
+
+    .full-height {
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+}
+
+/* ============================================
+   GLOBAL ANIMATION DISABLE
+   ============================================ */
+* {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    /* Be careful with this, might break layouts relying on transform. I'll stick to animation/transition first. */
+}
+
+/* Re-enabling transform because layout might depend on it (e.g. centering), but disabling transitions for it */
+* {
+    transition-property: none !important;
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+}
