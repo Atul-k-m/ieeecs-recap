@@ -60,7 +60,7 @@ export default function Chapter({ number, title, subtitle }: ChapterProps) {
                     animate={isInView ? { opacity: 0.6 } : {}}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="mt-6 text-lg md:text-xl tracking-wide"
-                    style={{ fontFamily: 'var(--font-mono)' }}
+                    style={{ fontFamily: 'var(--font-body)' }}
                 >
                     {subtitle}
                 </motion.p>

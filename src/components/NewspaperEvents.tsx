@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 interface NewspaperEventsProps {
     events: any[]
 }
 
 export default function NewspaperEvents({ events }: NewspaperEventsProps) {
+    const [isExpanded, setIsExpanded] = useState(false)
     return (
         <section
-            className="min-h-screen py-20 bg-white text-black relative font-serif"
+            className="min-h-screen py-20 bg-white text-black relative"
         >
 
             {/* Texture Overlay */}
@@ -25,7 +26,7 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                         <span className="font-mono text-xs uppercase">Price: FREE</span>
                     </div>
                     <h2 className="text-[13vw] md:text-[9rem] leading-[0.85] font-black tracking-[-0.05em] mb-4 text-black"
-                        style={{ fontFamily: '"Playfair Display", serif' }}>
+                        style={{ fontFamily: 'var(--font-title)' }}>
                         The Chronicle
                     </h2>
                     <div className="border-t-[1px] border-black py-1 flex justify-between items-center px-2 text-xs font-bold uppercase tracking-widest font-sans">
@@ -48,10 +49,10 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                         {/* Headline & Text */}
                         <div className="lg:col-span-8">
-                            <h3 className="text-5xl md:text-7xl font-bold mb-6 leading-[0.9] tracking-tight" style={{ fontFamily: '"Playfair Display", serif' }}>
+                            <h3 className="text-5xl md:text-7xl font-bold mb-6 leading-[0.9] tracking-tight" style={{ fontFamily: 'var(--font-title)' }}>
                                 IEEE Summer of Code
                             </h3>
-                            <div className="columns-1 md:columns-2 gap-8 text-lg font-serif leading-relaxed text-left hyphens-auto">
+                            <div className="columns-1 md:columns-2 gap-8 text-lg leading-relaxed text-left hyphens-auto">
                                 <p className="mb-4">
                                     <span className="float-left text-5xl font-black mr-2 mt-[-6px] font-sans">I</span>EEE SoC stands as one of the biggest All-India open source contribution events. With a staggering prize pool of ₹75,000, the event galvanized the tech community, achieving over 1.5 Million+ impressions.
                                 </p>
@@ -72,7 +73,7 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                                     />
                                 </div>
                                 <p className="text-[10px] font-sans mt-1 p-1 leading-tight text-gray-600 border-t border-gray-300 pt-1">
-                                    Fig 1.1: Official banner for the IEEE Summer of Code 2025 edition.
+                                    Fig 1: IEEE Summer of Code 2025 edition.
                                 </p>
                             </div>
                             {/* "Ad" or Stats */}
@@ -84,13 +85,16 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                     </div>
                 </div>
 
-                {/* ARTICLES GRID (COLUMNAR LAYOUT) */}
-                <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+                {/* ARTICLES GRID (GRID LAYOUT) */}
+                {/* ARTICLES GRID (GRID LAYOUT) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {events.map((event, i) => {
+                        const isHiddenOnMobile = !isExpanded && i >= 2;
                         return (
                             <div
                                 key={event.id}
-                                className="break-inside-avoid mb-8 p-6 bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-200"
+                                className={`p-6 bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-200 ${isHiddenOnMobile ? 'hidden md:block' : ''
+                                    }`}
                             >
                                 {/* Decorative "Tape" or "Corner" */}
                                 <div className="absolute top-0 right-0 w-8 h-8 bg-black -mr-4 -mt-4 transform rotate-45" />
@@ -103,12 +107,12 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                                     <span className="font-sans text-[0.7rem] font-bold text-white bg-black px-1">Pg. {event.id + 1}</span>
                                 </div>
 
-                                <h4 className="text-3xl font-black mb-3 leading-[0.9] tracking-tight group-hover:underline decoration-4 decoration-black underline-offset-4" style={{ fontFamily: '"Playfair Display", serif' }}>
+                                <h4 className="text-3xl font-black mb-3 leading-[0.9] tracking-tight group-hover:underline decoration-4 decoration-black underline-offset-4" style={{ fontFamily: 'var(--font-title)' }}>
                                     {event.title}
                                 </h4>
 
                                 {/* Drop cap style content */}
-                                <p className="text-sm font-serif leading-6 text-justify text-gray-900 first-letter:text-3xl first-letter:font-black first-letter:float-left first-letter:mr-1 first-letter:mt-[-4px]">
+                                <p className="text-sm leading-6 text-justify text-gray-900 first-letter:text-3xl first-letter:font-black first-letter:float-left first-letter:mr-1 first-letter:mt-[-4px]">
                                     {event.description}
                                 </p>
 
@@ -123,11 +127,27 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                     })}
                 </div>
 
+                {/* READ MORE BUTTON (Mobile Only) */}
+                <div className="mt-12 text-center md:hidden">
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="group relative inline-flex items-center justify-center px-8 py-3 text-sm font-bold uppercase tracking-widest border-2 border-black bg-white hover:bg-black hover:text-white transition-colors duration-300"
+                    >
+                        <span className="relative z-10">{isExpanded ? 'Show Less' : 'Read All Issues'}</span>
+                        <span className="absolute inset-0 bg-black/10 translate-y-1 translate-x-1 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
+                    </button>
+                    {!isExpanded && (
+                        <p className="mt-4 text-xs font-mono opacity-60">
+                            +{events.length - 2} more issues available
+                        </p>
+                    )}
+                </div>
+
                 {/* FOOTER */}
                 <div className="border-t-[4px] border-black mt-12 pt-4 flex justify-between items-center font-sans text-xs font-bold uppercase tracking-widest">
                     <span>IEEE Computer Society</span>
-                    <span>2025 Year In Review</span>
-                    <span>Bangalore Section</span>
+                    <span>2025</span>
+                    <span>BMSIT&M SBC</span>
                 </div>
 
             </div>

@@ -10,6 +10,8 @@
         --font-display: 'Bebas Neue', Impact, sans-serif;
         --font-mono: 'Space Mono', 'Courier New', monospace;
         --font-gothic: 'Dela Gothic One', Impact, sans-serif;
+        --font-title: 'Playfair Display', serif;
+        --font-body: 'Lora', serif;
     }
 
     * {
@@ -23,7 +25,7 @@
 
     body {
         @apply bg-white text-black;
-        font-family: var(--font-mono);
+        font-family: var(--font-body);
         overflow-x: hidden;
     }
 

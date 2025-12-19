@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function SidebarNav() {
-    const { scrollYProgress } = useScroll()
-    const scaleY = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    })
+
 
     const [activeSection, setActiveSection] = useState('01')
     const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +28,7 @@ export default function SidebarNav() {
     const menuItems = [
         { id: 'home', label: 'HOME', num: '01' },
         { id: 'timeline', label: 'TIMELINE', num: '02' },
-        { id: 'mission', label: 'MISSION', num: '03' },
+        { id: 'socials', label: 'NETWORK', num: '03' },
         { id: 'team', label: 'TEAM', num: '04' },
         { id: 'finale', label: 'FINALE', num: '05' },
     ]
@@ -45,6 +40,8 @@ export default function SidebarNav() {
             element.scrollIntoView({ behavior: 'smooth' })
         }
     }
+
+    const activeLabel = menuItems.find(item => item.num === activeSection)?.label || 'MENU'
 
     return (
         <>
@@ -101,12 +98,7 @@ export default function SidebarNav() {
 
                 {/* Center: Vertical Progress Bar text */}
                 <div className="flex-1 flex items-center justify-center relative w-full my-8">
-                    <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-white/20">
-                        <motion.div
-                            style={{ scaleY, transformOrigin: 'top' }}
-                            className="absolute top-0 left-0 right-0 bg-white w-full h-full origin-top"
-                        />
-                    </div>
+
 
                     {/* Rotated Vertical Text */}
                     <div className="-rotate-90 whitespace-nowrap text-white font-bold tracking-[0.3em] text-xs mix-blend-difference z-10 py-4 bg-black">
@@ -122,24 +114,26 @@ export default function SidebarNav() {
             </div>
 
             {/* --- MOBILE FLOATING DOCK (Visible on small screens) --- */}
-            <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex gap-2">
+            <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex gap-2 w-[90%] max-w-sm justify-center">
                 <motion.button
                     onClick={() => setIsOpen(!isOpen)}
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="h-12 bg-black text-white rounded-full flex items-center px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] border-2 border-white/20 active:border-[#FFD700]"
+                    className="h-14 bg-black/90 backdrop-blur-md text-white rounded-full flex items-center justify-between px-6 shadow-[0px_10px_20px_rgba(0,0,0,0.3)] border border-white/20 active:border-[#FFD700] w-full"
                 >
-                    <span className="font-mono text-xs text-[#FFD700] mr-2">CH.{activeSection}</span>
-                    <div className="h-4 w-[1px] bg-white/20 mx-2" />
-                    <span className="font-bold text-sm tracking-widest">NAVIGATE</span>
+                    <div className="flex items-center">
+                        <span className="font-mono text-xs text-[#FFD700] mr-3">CH.{activeSection}</span>
+                        <div className="h-4 w-[1px] bg-white/20 mr-3" />
+                        <span className="font-bold text-sm tracking-widest">{activeLabel}</span>
+                    </div>
 
                     {/* Dynamic Dot Indicator */}
-                    <div className="flex gap-1 ml-3">
+                    <div className="flex gap-1.5">
                         {[1, 2, 3, 4, 5].map(i => (
                             <motion.div
                                 key={i}
-                                className={`w-1.5 h-1.5 rounded-full ${activeSection === `0${i}` ? 'bg-white' : 'bg-white/20'}`}
+                                className={`w-1.5 h-1.5 rounded-full ${activeSection === `0${i}` ? 'bg-[#FFD700]' : 'bg-white/20'}`}
                             />
                         ))}
                     </div>

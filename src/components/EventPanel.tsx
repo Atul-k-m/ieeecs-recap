@@ -67,7 +67,7 @@ export default function EventPanel({ event, index, isEven }: EventPanelProps) {
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2, duration: 0.5 }}
                             className="relative z-10 text-display mb-4"
-                            style={{ fontFamily: 'var(--font-gothic)' }}
+                            style={{ fontFamily: 'var(--font-title)' }}
                         >
                             {event.title}
                         </motion.h3>
@@ -78,7 +78,7 @@ export default function EventPanel({ event, index, isEven }: EventPanelProps) {
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ delay: 0.4, duration: 0.5 }}
                             className="relative z-10 text-lg md:text-xl leading-relaxed mb-6 max-w-lg"
-                            style={{ fontFamily: 'var(--font-mono)' }}
+                            style={{ fontFamily: 'var(--font-body)' }}
                         >
                             {event.description}
                         </motion.p>
