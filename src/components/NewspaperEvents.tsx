@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 interface NewspaperEventsProps {
     events: any[]
 }
 
 export default function NewspaperEvents({ events }: NewspaperEventsProps) {
-    const [isExpanded, setIsExpanded] = useState(false)
     return (
         <section
             className="min-h-screen py-20 bg-white text-black relative"
@@ -54,7 +53,7 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                             </h3>
                             <div className="columns-1 md:columns-2 gap-8 text-lg leading-relaxed text-left hyphens-auto">
                                 <p className="mb-4">
-                                    <span className="float-left text-5xl font-black mr-2 mt-[-6px] font-sans">I</span>EEE SoC stands as one of the biggest All-India open source contribution events. With a staggering prize pool of ₹75,000, the event galvanized the tech community, achieving over 1.5 Million+ impressions.
+                                    <span className="float-left text-5xl font-black mr-2 mt-[-6px] font-sans">I</span>EEE SoC stands as one of the biggest All-India open source contribution events. With a staggering prize pool of <b>₹75,000</b>, the event galvanized the tech community, achieving over <b>1.5 Million+</b> impressions.
                                 </p>
                                 <p>
                                     Participants and winners hailed from across India, collaborating to push the boundaries of open source software. The initiative has not only fostered code contributions but also built a lasting community of developers dedicated to innovation.
@@ -87,14 +86,13 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
 
                 {/* ARTICLES GRID (GRID LAYOUT) */}
                 {/* ARTICLES GRID (GRID LAYOUT) */}
+                {/* ARTICLES GRID (GRID LAYOUT) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {events.map((event, i) => {
-                        const isHiddenOnMobile = !isExpanded && i >= 2;
                         return (
                             <div
                                 key={event.id}
-                                className={`p-6 bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-200 ${isHiddenOnMobile ? 'hidden md:block' : ''
-                                    }`}
+                                className="p-6 bg-white border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group hover:-translate-y-1 transition-transform duration-200"
                             >
                                 {/* Decorative "Tape" or "Corner" */}
                                 <div className="absolute top-0 right-0 w-8 h-8 bg-black -mr-4 -mt-4 transform rotate-45" />
@@ -125,22 +123,6 @@ export default function NewspaperEvents({ events }: NewspaperEventsProps) {
                             </div>
                         )
                     })}
-                </div>
-
-                {/* READ MORE BUTTON (Mobile Only) */}
-                <div className="mt-12 text-center md:hidden">
-                    <button
-                        onClick={() => setIsExpanded(!isExpanded)}
-                        className="group relative inline-flex items-center justify-center px-8 py-3 text-sm font-bold uppercase tracking-widest border-2 border-black bg-white hover:bg-black hover:text-white transition-colors duration-300"
-                    >
-                        <span className="relative z-10">{isExpanded ? 'Show Less' : 'Read All Issues'}</span>
-                        <span className="absolute inset-0 bg-black/10 translate-y-1 translate-x-1 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none" />
-                    </button>
-                    {!isExpanded && (
-                        <p className="mt-4 text-xs font-mono opacity-60">
-                            +{events.length - 2} more issues available
-                        </p>
-                    )}
                 </div>
 
                 {/* FOOTER */}

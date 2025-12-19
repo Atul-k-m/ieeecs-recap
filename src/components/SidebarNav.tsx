@@ -14,11 +14,12 @@ export default function SidebarNav() {
             const totalHeight = document.body.scrollHeight - windowHeight
             const progress = scrollPos / totalHeight
 
-            if (progress < 0.2) setActiveSection('01')
-            else if (progress < 0.4) setActiveSection('02')
-            else if (progress < 0.6) setActiveSection('03')
-            else if (progress < 0.8) setActiveSection('04')
-            else setActiveSection('05')
+            if (progress < 0.15) setActiveSection('01')
+            else if (progress < 0.3) setActiveSection('02')
+            else if (progress < 0.5) setActiveSection('03')
+            else if (progress < 0.7) setActiveSection('04')
+            else if (progress < 0.9) setActiveSection('05')
+            else setActiveSection('06')
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -28,9 +29,10 @@ export default function SidebarNav() {
     const menuItems = [
         { id: 'home', label: 'HOME', num: '01' },
         { id: 'timeline', label: 'TIMELINE', num: '02' },
-        { id: 'socials', label: 'NETWORK', num: '03' },
+        { id: 'mission', label: 'MISSION', num: '03' },
         { id: 'team', label: 'TEAM', num: '04' },
-        { id: 'finale', label: 'FINALE', num: '05' },
+        { id: 'socials', label: 'NETWORK', num: '05' },
+        { id: 'finale', label: 'FINALE', num: '06' },
     ]
 
     const scrollToSection = (id: string) => {
@@ -109,7 +111,7 @@ export default function SidebarNav() {
                 {/* Bottom: Current Page Number */}
                 <div className="text-white font-mono text-xl font-bold tracking-widest relative">
                     {activeSection}
-                    <span className="absolute -top-2 -right-2 text-[10px] opacity-50">/05</span>
+                    <span className="absolute -top-2 -right-2 text-[10px] opacity-50">/06</span>
                 </div>
             </div>
 
@@ -130,7 +132,7 @@ export default function SidebarNav() {
 
                     {/* Dynamic Dot Indicator */}
                     <div className="flex gap-1.5">
-                        {[1, 2, 3, 4, 5].map(i => (
+                        {[1, 2, 3, 4, 5, 6].map(i => (
                             <motion.div
                                 key={i}
                                 className={`w-1.5 h-1.5 rounded-full ${activeSection === `0${i}` ? 'bg-[#FFD700]' : 'bg-white/20'}`}

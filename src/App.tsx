@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Cover from './components/Cover'
 import NewspaperEvents from './components/NewspaperEvents'
 import TeamPage from './components/TeamPage'
+import MissionVision from './components/MissionVision'
 import Finale from './components/Finale'
 import SidebarNav from './components/SidebarNav'
 import Socials from './components/Socials'
@@ -62,9 +63,9 @@ export default function App() {
 
             <SectionSeparator />
 
-            {/* SOCIALS */}
-            <section id="socials">
-                <Socials />
+            {/* MISSION / VISION */}
+            <section id="mission">
+                <MissionVision />
             </section>
 
             <SectionSeparator />
@@ -72,6 +73,13 @@ export default function App() {
             {/* TEAM */}
             <section id="team">
                 <TeamPage team={team} />
+            </section>
+
+            <SectionSeparator />
+
+            {/* SOCIALS */}
+            <section id="socials">
+                <Socials />
             </section>
 
 
