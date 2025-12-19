@@ -34,7 +34,7 @@ const team = [
     { role: 'OPS ASSOCIATE', name: 'TEJAS', image: '/Photos Members/tejas.jpg' },
     { role: 'PR ASSOCIATE', name: 'HARSHIT', image: '/Photos Members/harshit1.jpeg' },
     { role: 'PR ASSOCIATE', name: 'SOWARABHI', image: '/Photos Members/sowarabhi.jpg' },
-    { role: 'PR ASSOCIATE', name: 'KEERTHI', image: '/Photos Members/keerthi.jpg' },
+    { role: 'PR ASSOCIATE', name: 'KEERTHI', image: '/Photos Members/keerthi.png' },
 ]
 
 export default function App() {
