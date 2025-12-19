@@ -45,8 +45,8 @@ export default function JigsawTeam({ team }: JigsawTeamProps) {
                         return (
                             <motion.div
                                 key={member.role}
-                                initial={{ scale: 0, rotation: Math.random() * 360 }}
-                                animate={isInView ? { scale: 1, rotation: 0 } : {}}
+                                initial={{ scale: 0, rotate: Math.random() * 360 }}
+                                animate={isInView ? { scale: 1, rotate: 0 } : {}}
                                 transition={{
                                     delay: index * 0.05,
                                     type: 'spring',
